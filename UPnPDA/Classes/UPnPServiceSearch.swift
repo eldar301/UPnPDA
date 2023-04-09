@@ -219,6 +219,7 @@ extension UPnPServiceSearch {
         
         do {
             /// 绑定UDP 端口 ，并开始接收该端口数据
+            try udp.enableReusePort(true)
             try udp.bind(toPort: UInt16(M_SEARCH_IPV4_PORT))
             try udp.beginReceiving()
             try udp.joinMulticastGroup(M_SEARCH_HOST)
